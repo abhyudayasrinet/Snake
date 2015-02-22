@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Snake</string>
+    <string name="hello_world">Hello world!</string>
+	<string-array name="difficulty_options">
+        <item >Beginner</item>
+        <item >Normal</item>
+        <item >Expert</item>
+    </string-array>
+</resources>

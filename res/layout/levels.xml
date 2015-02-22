@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:gravity="center"
+    android:background="#E3EAEC">
+
+    
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Level"
+        android:padding="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ListView
+        android:id="@+id/levelslist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    	android:background="#E3EAEC" >
+    </ListView>
+    
+    <com.google.android.gms.ads.AdView
+	        android:id="@+id/adViewLevels"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        ads:adSize="BANNER"
+	        ads:adUnitId="ca-app-pub-4192002242677873/7720145348" />
+    
+    
+
+</LinearLayout>
