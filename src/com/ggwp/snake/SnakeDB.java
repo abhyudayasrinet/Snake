@@ -108,11 +108,7 @@ public class SnakeDB extends SQLiteOpenHelper {
 		
 		String query = "SELECT * FROM "+ObstructionsTable+" WHERE "+Level+"="+level;
 		
-		Log.d("query",query);
-		
 		Cursor cursor = db.rawQuery(query, null);
-		
-		Log.d("rows recieved",cursor.getCount()+"");
 		
 		Obstructions temp;
 		

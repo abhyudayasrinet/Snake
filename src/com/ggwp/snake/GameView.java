@@ -15,6 +15,7 @@ import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.RectF;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -111,9 +112,7 @@ public class GameView extends View {
 		
 		food_radius = snake_width/2 +1;
 		
-		//Set_Obstructions();
 		Load_obstructions();
-		Log.d("load obstructions","done");
 		
 		wrong_direction = 3;
 		
@@ -140,7 +139,6 @@ public class GameView extends View {
 			food_y = randInt.nextInt(  (screen_height-food_radius) - (margin+food_radius)  ) + (margin+food_radius);
 	    	food_x = randInt.nextInt(  (screen_width-food_radius) - (margin+food_radius)  )+(margin+food_radius);
 		}
-		Log.d("constructor","over");
 	}
 	
 	
@@ -227,7 +225,6 @@ public class GameView extends View {
 		canvas.drawLine(0, screen_height , screen_width, screen_height , paint);
 		canvas.drawLine(0, 0, 0, screen_height, paint);
 		canvas.drawLine(screen_width, 0, screen_width, screen_height, paint);
-		
 		
 		
 		//drawing obstructions
@@ -396,7 +393,7 @@ public class GameView extends View {
 	private void Load_obstructions() {
 		
 		obstructions  = DB.getObstructions(level);
-		Log.d("obstructions size",obstructions.size()+"");
+		
 		for(int i  =0 ; i < obstructions.size();i++) {
 			if(obstructions.get(i).getShape().equals("Rectangle")) {
 				

@@ -3,7 +3,10 @@ package com.ggwp.snake;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -50,22 +53,19 @@ public class GameActivity extends Activity implements OnClickListener {
 		Score = new TextView(this);
 		DB = new SnakeDB(this);
 	
-//		SharedPreferences prefs = getSharedPreferences("com.example.snake", 
-//															Context.MODE_PRIVATE);
-//
-//		int currentDbVersion = prefs.getInt("DB_VERSION", 0);
-//		
-//		if ( currentDbVersion < DB_VERSION ) {
-//
-//            Editor editor = prefs.edit();
-//            editor.putInt("DB_VERSION", DB_VERSION);
-//            editor.commit();
+		
+		//delete and recreate database if version is lower
+		SharedPreferences prefs = getSharedPreferences("com.example.snake",Context.MODE_PRIVATE);
+		int currentDbVersion = prefs.getInt("DB_VERSION", 0);
+		
+		if ( currentDbVersion < DB_VERSION ) {
+
+            Editor editor = prefs.edit();
+            editor.putInt("DB_VERSION", DB_VERSION);
+            editor.commit();
             DB.deleteAll();
             setObstructions();
-            Log.d("setobstructions","done");
-            
-            
-//		}
+		}
 		
 		
 		DisplayMetrics metrics = new DisplayMetrics();
@@ -211,8 +211,8 @@ public class GameActivity extends Activity implements OnClickListener {
             
         	try {
             	
-        		Log.d("x",""+(e2.getX()-e1.getX()));
-        		Log.d("y",""+(e2.getY()-e1.getY()));
+//        		Log.d("x",""+(e2.getX()-e1.getX()));
+//        		Log.d("y",""+(e2.getY()-e1.getY()));
       
         		if(!view.pause_game) {
 	                if(e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE 
@@ -354,7 +354,8 @@ public class GameActivity extends Activity implements OnClickListener {
       		temp = new Obstructions( 80, 15, 30, 30); // __
       		DB.addObstruction(5,temp);
       		
-      		//level 6temp = new Obstructions(99 ,0, 0, 0);
+      		//level 6
+      		temp = new Obstructions(99 ,0, 0, 0);
 			DB.addObstruction(6, temp);
 			temp = new Obstructions(0 , 99, 0, 0);
       		DB.addObstruction(6, temp);
@@ -443,6 +444,10 @@ public class GameActivity extends Activity implements OnClickListener {
       		DB.addObstruction(9,temp);
       		temp = new Obstructions( 74, 20, 74, 20); // 2 3
       		DB.addObstruction(9,temp);
+      		
+      		//level 10
+      		temp = new Obstructions(30f, 50, 50);
+      		DB.addObstruction(10, temp);
       	
 	}
 	
