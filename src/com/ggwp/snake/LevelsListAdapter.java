@@ -52,7 +52,7 @@ public class LevelsListAdapter extends ArrayAdapter<String>{
 			public void onClick(View v) {
 				
 				((Activity)context).finish();
-				Intent intent = new Intent(context, MainActivity.class);
+				Intent intent = new Intent(context, GameActivity.class);
 				((Activity)context).overridePendingTransition(R.anim.animation,R.anim.animation2);
 				intent.putExtra("speed", ((Activity)context).getIntent().getIntExtra("speed",5) );
 				intent.putExtra("difficulty", ((Activity)context).getIntent().getIntExtra("difficulty",1));

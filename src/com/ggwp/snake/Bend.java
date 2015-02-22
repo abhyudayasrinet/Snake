@@ -4,6 +4,12 @@ import android.util.Log;
 
 public class Bend {
 
+	int left;
+	int right;
+	int top;
+	int bottom;
+	int direction;
+	
 	public Bend(int left, int right, int top, int bottom, int direction) {
 		
 		this.left = left;
@@ -13,11 +19,6 @@ public class Bend {
 		this.direction = direction;
 		
 	}
-	int left;
-	int right;
-	int top;
-	int bottom;
-	int direction;
 	
 	public int getLeft() {
 		return left;

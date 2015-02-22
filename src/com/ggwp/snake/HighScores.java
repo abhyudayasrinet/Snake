@@ -46,7 +46,7 @@ public class HighScores extends Activity {
 		
 		//List of easy high scores
 		List <String> scoresEasy = new ArrayList<String>();
-		for(int i=1;i<=5;i++)
+		for(int i=1;i<=10;i++)
 		{
 			int val = DB.getHighScore(0, i);
 			scoresEasy.add(String.valueOf(val));
@@ -55,7 +55,7 @@ public class HighScores extends Activity {
 		
 		//List of normal high scores
 		List <String> scoresNormal = new ArrayList<String>();
-		for(int i=1;i<=5;i++)
+		for(int i=1;i<=10;i++)
 		{
 			int val = DB.getHighScore(1, i);
 			scoresNormal.add(String.valueOf(val));
@@ -64,7 +64,7 @@ public class HighScores extends Activity {
 		
 		//List of easy high scores
 		List <String> scoresHard = new ArrayList<String>();
-		for(int i=1;i<=5;i++)
+		for(int i=1;i<=10;i++)
 		{
 			int val = DB.getHighScore(2, i);
 			scoresHard.add(String.valueOf(val));

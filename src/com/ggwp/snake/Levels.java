@@ -27,9 +27,9 @@ public class Levels extends Activity{
 		
 		
 		List<String> levels = new ArrayList<String>();
-		for(int i =0 ; i<5;i++) {
+		for(int i = 1 ; i<=10;i++) {
 			
-			levels.add(""+(i+1));
+			levels.add(""+(i));
 			
 		}
 		ListView listView = (ListView) findViewById(R.id.levelslist);

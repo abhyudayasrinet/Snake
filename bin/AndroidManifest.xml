@@ -30,7 +30,7 @@
              android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
         
         <activity
-            android:name="com.ggwp.snake.MainActivity"
+            android:name="com.ggwp.snake.GameActivity"
             android:screenOrientation="portrait"
             android:label="game activity" />
         
