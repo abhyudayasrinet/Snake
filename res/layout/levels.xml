@@ -7,11 +7,12 @@
     android:gravity="center"
     android:background="#E3EAEC">
 
-    
+	    
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
         android:text="Select Level"
         android:padding="10dp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -19,14 +20,16 @@
     <ListView
         android:id="@+id/levelslist"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
     	android:background="#E3EAEC" >
     </ListView>
     
     <com.google.android.gms.ads.AdView
 	        android:id="@+id/adViewLevels"
 	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
+	        android:layout_height="0dp"
+        	android:layout_weight="0.1"
 	        ads:adSize="BANNER"
 	        ads:adUnitId="ca-app-pub-4192002242677873/7720145348" />
     

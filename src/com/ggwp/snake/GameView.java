@@ -23,6 +23,9 @@ import android.widget.TextView;
 
 public class GameView extends View {
 
+	static final int CLASSIC_MODE = 0;
+	static final int TIME_MODE = 1;
+	
 	SnakeDB DB;
 	
 	Context mcontext;
@@ -133,10 +136,10 @@ public class GameView extends View {
 	    builder = new AlertDialog.Builder(mcontext);
 	    
 	    randInt = new Random();
-	    food_y = randInt.nextInt(  (screen_height-food_radius) - (margin+food_radius)  ) + (margin+food_radius);
-    	food_x = randInt.nextInt(  (screen_width-food_radius) - (margin+food_radius)  )+(margin+food_radius);
+	    food_y = randInt.nextInt(  (screen_height-food_radius) - (margin+food_radius)  - 200) + (margin+food_radius);
+    	food_x = randInt.nextInt(  (screen_width-food_radius) - (margin+food_radius)  )+ (margin+food_radius);
 		while(!location_ok()) {
-			food_y = randInt.nextInt(  (screen_height-food_radius) - (margin+food_radius)  ) + (margin+food_radius);
+			food_y = randInt.nextInt(  (screen_height-food_radius) - (margin+food_radius)  - 200 ) + (margin+food_radius);
 	    	food_x = randInt.nextInt(  (screen_width-food_radius) - (margin+food_radius)  )+(margin+food_radius);
 		}
 	}
@@ -316,73 +319,136 @@ public class GameView extends View {
         	invalidate();
         }
         else {
-     
-        	// create dialog and update high score if made 
-        	if(DB.getHighScore(difficulty, level) < score) {
-        		DB.updateHighScore(difficulty, level, score);
-        		builder.setTitle("Congrats!!!").setMessage("New High Score!!!");
-        		builder.setPositiveButton("Try Again", new DialogInterface.OnClickListener() {
-					
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						// TODO Auto-generated method stub
-						Activity activity = (Activity)getContext();
-						activity.finish();
-			               
-			               
-			               Intent intent = new Intent(mcontext,GameActivity.class);
-//			               intent.setFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS 
-//			            		   | Intent.FLAG_ACTIVITY_NO_HISTORY);
-			               //overridePendingTransition(R.anim.animation,R.anim.animation2);
-			               if(difficulty == 0) {
-
-								
-								intent.putExtra("speed", 3);
-								intent.putExtra("difficulty", 0);
-							}
-							if(difficulty == 1) {
-
-								
-								intent.putExtra("speed", 5);
-								intent.putExtra("difficulty", 1);
-							}
-							if(difficulty == 2) {
-
-								
-								intent.putExtra("speed", 10);
-								intent.putExtra("difficulty", 2);
-							}
-							intent.putExtra("level", level);
-			                mcontext.startActivity(intent);
-						
-					}
-				});
-        		
-        		builder.setNegativeButton("Go back", new DialogInterface.OnClickListener() {
-					
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						
-						Activity activity = (Activity)getContext();
-						activity.finish();
-						
-    					Intent intent = new Intent(mcontext, Levels.class);
-    					intent.putExtra("speed", SPEED);
-						intent.putExtra("difficulty", difficulty);
-						mcontext.startActivity(intent);
-						
-						
-					}
-				});
-        		AlertDialog dialog = builder.create();
-    			dialog.setCancelable(false);
-    			dialog.show();
-        	}
-        
-        	
+        	gameOver();
         }
         
 		
+	}
+	
+	public void gameOver() {
+
+	     
+    	// create dialog and update high score if made 
+    	if(DB.getHighScore(difficulty, level,CLASSIC_MODE) < score) {
+    		
+    		DB.updateHighScore(difficulty, level, score,CLASSIC_MODE);
+    		builder.setTitle("Congrats!!!").setMessage("New High Score!!!");
+    		builder.setPositiveButton("Try Again", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					Activity activity = (Activity)getContext();
+					activity.finish();
+		               
+		               
+		               Intent intent = new Intent(mcontext,GameActivity.class);
+		               if(difficulty == 0) {
+
+							
+							intent.putExtra("speed", 3);
+							intent.putExtra("difficulty", 0);
+						}
+						if(difficulty == 1) {
+
+							
+							intent.putExtra("speed", 5);
+							intent.putExtra("difficulty", 1);
+						}
+						if(difficulty == 2) {
+
+							
+							intent.putExtra("speed", 10);
+							intent.putExtra("difficulty", 2);
+						}
+						intent.putExtra("level", level);
+		                mcontext.startActivity(intent);
+					
+				}
+			});
+    		
+    		builder.setNegativeButton("Go back", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					
+					Activity activity = (Activity)getContext();
+					activity.finish();
+					
+					Intent intent = new Intent(mcontext, Levels.class);
+					intent.putExtra("speed", SPEED);
+					intent.putExtra("difficulty", difficulty);
+					mcontext.startActivity(intent);
+					
+					
+				}
+			});
+    		AlertDialog dialog = builder.create();
+			dialog.setCancelable(false);
+			dialog.show();
+			
+    	}
+    	else {
+    		
+    		builder.setTitle("You Lose!").setMessage("So close.. Try again?");
+    		builder.setPositiveButton("Try Again", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+
+					Activity activity = (Activity)getContext();
+					activity.finish();
+		               
+		               
+		               Intent intent = new Intent(mcontext,GameActivity.class);
+		               if(difficulty == 0) {
+
+							
+							intent.putExtra("speed", 3);
+							intent.putExtra("difficulty", 0);
+						}
+						if(difficulty == 1) {
+
+							
+							intent.putExtra("speed", 5);
+							intent.putExtra("difficulty", 1);
+						}
+						if(difficulty == 2) {
+
+							
+							intent.putExtra("speed", 10);
+							intent.putExtra("difficulty", 2);
+						}
+						intent.putExtra("level", level);
+		                mcontext.startActivity(intent);
+					
+				}
+			});
+    		
+    		builder.setNegativeButton("Go back", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					
+					Activity activity = (Activity)getContext();
+					activity.finish();
+					
+					Intent intent = new Intent(mcontext, Levels.class);
+					intent.putExtra("speed", SPEED);
+					intent.putExtra("difficulty", difficulty);
+					mcontext.startActivity(intent);
+					
+					
+				}
+			});
+    		
+    		AlertDialog dialog = builder.create();
+			dialog.setCancelable(false);
+			dialog.show();
+    		
+    	}
+    
+    	
+    
 	}
 	
 	

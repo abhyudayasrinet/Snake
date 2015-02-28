@@ -2,12 +2,15 @@ package com.ggwp.snake;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import com.ggwp.snake.R;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 
 public class Levels extends Activity{
@@ -22,9 +25,6 @@ public class Levels extends Activity{
 		AdView adView = (AdView) this.findViewById(R.id.adViewLevels);
 		AdRequest adRequest = new AdRequest.Builder().build();
 		adView.loadAd(adRequest);
- 
-		
-		
 		
 		List<String> levels = new ArrayList<String>();
 		for(int i = 1 ; i<=10;i++) {
@@ -42,8 +42,8 @@ public class Levels extends Activity{
 	public void onBackPressed() {    
 		Levels.this.finish();
 	    Intent intent = new Intent(this,MainMenu.class);
-	    intent.setFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS 
-     		   | Intent.FLAG_ACTIVITY_NO_HISTORY);
+//	    intent.setFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS 
+//     		   | Intent.FLAG_ACTIVITY_NO_HISTORY);
 	    overridePendingTransition(R.anim.animation,R.anim.animation2);
 	    startActivity(intent);
 	}

@@ -42,6 +42,7 @@ public class GameActivity extends Activity implements OnClickListener {
 	int width,height;
 	int temp_height;
 	SnakeDB DB;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -52,7 +53,6 @@ public class GameActivity extends Activity implements OnClickListener {
 		
 		Score = new TextView(this);
 		DB = new SnakeDB(this);
-	
 		
 		//delete and recreate database if version is lower
 		SharedPreferences prefs = getSharedPreferences("com.example.snake",Context.MODE_PRIVATE);
@@ -88,25 +88,25 @@ public class GameActivity extends Activity implements OnClickListener {
         TopMenu.setOrientation(LinearLayout.HORIZONTAL);
         mainLayout.addView(TopMenu);
         
-        final Button myButton = new Button(this);
-        myButton.setLayoutParams(new LinearLayout.LayoutParams(0, LayoutParams.WRAP_CONTENT,1.0f));
+        final Button pauseButton = new Button(this);
+        pauseButton.setLayoutParams(new LinearLayout.LayoutParams(0, LayoutParams.WRAP_CONTENT,1.0f));
         if(view.pause_game)
-        	myButton.setText("PLAY");
+        	pauseButton.setText("PLAY");
         else
-        	myButton.setText("PAUSE");
+        	pauseButton.setText("PAUSE");
         
-        myButton.setOnClickListener(new OnClickListener() {
+        pauseButton.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 view.Pause();
                 if(view.pause_game)
-                	myButton.setText("PLAY");
+                	pauseButton.setText("PLAY");
                 else
-                	myButton.setText("PAUSE");
+                	pauseButton.setText("PAUSE");
             }
         });
-        TopMenu.addView(myButton);
+        TopMenu.addView(pauseButton);
         
         Button restart = new Button(this);
         restart.setText("Restart");
@@ -265,191 +265,192 @@ public class GameActivity extends Activity implements OnClickListener {
 	}
 	
 	public void onBackPressed() {    
-	    Intent intent = new Intent(this,MainMenu.class);
+		GameActivity.this.finish();
+		Intent intent = new Intent(this,MainMenu.class);
 	    overridePendingTransition(R.anim.animation,R.anim.animation2);
 	    startActivity(intent);
-	    GameActivity.this.finish();
+	    
 	}
 	
 	private void setObstructions( ) {		
-			
-			Obstructions temp; 
-			
-			//level 1
-			temp = new Obstructions(99 ,0, 0, 0);
-			DB.addObstruction(1, temp);
-			temp = new Obstructions(0 , 99, 0, 0);
-      		DB.addObstruction(1, temp);
-      		temp = new Obstructions(0 , 0, 99, 0);
-      		DB.addObstruction(1, temp);
-      		temp = new Obstructions(0 , 0, 0, 99);
-      		DB.addObstruction(1, temp);
-      		
-      		
-			//level 2
-      		temp = new Obstructions(99 ,0, 0, 0);
-			DB.addObstruction(2, temp);
-			temp = new Obstructions(0 , 99, 0, 0);
-      		DB.addObstruction(2, temp);
-      		temp = new Obstructions(0 , 0, 99, 0);
-      		DB.addObstruction(2, temp);
-      		temp = new Obstructions(0 , 0, 0, 99);
-      		DB.addObstruction(2, temp);
-      		temp = new Obstructions(17.5f, 50, 72.5f);
-      		DB.addObstruction(2, temp);
-      		temp = new Obstructions(17.5f, 50, 27.5f);
-      		DB.addObstruction(2, temp);
-      		
-      		//level 3
-      		temp = new Obstructions(99 ,0, 0, 0);
-			DB.addObstruction(3, temp);
-			temp = new Obstructions(0 , 99, 0, 0);
-      		DB.addObstruction(3, temp);
-      		temp = new Obstructions(0 , 0, 99, 0);
-      		DB.addObstruction(3, temp);
-      		temp = new Obstructions(0 , 0, 0, 99);
-      		DB.addObstruction(3, temp);
-      		temp = new Obstructions(13.75f ,71.25f, 25, 25);
-      		DB.addObstruction(3, temp); 
-      		temp = new Obstructions(42.5f, 42.5f, 25, 25);
-      		DB.addObstruction(3, temp);
-      		temp = new Obstructions(71.25f, 13.75f, 25, 25);
-      		DB.addObstruction(3, temp);
-      		
-      		//level 4
-      		temp = new Obstructions(99 ,0, 0, 0);
-			DB.addObstruction(4, temp);
-			temp = new Obstructions(0 , 99, 0, 0);
-      		DB.addObstruction(4, temp);
-      		temp = new Obstructions(0 , 0, 99, 0);
-      		DB.addObstruction(4, temp);
-      		temp = new Obstructions(0 , 0, 0, 99);
-      		DB.addObstruction(4, temp);
-      		temp = new Obstructions(17.5f, 27.5f, 27.5f);
-      		DB.addObstruction(4, temp);
-      		temp = new Obstructions(17.5f, 27.5f, 72.5f);
-      		DB.addObstruction(4, temp);
-      		temp = new Obstructions(17.5f, 72.5f, 27.5f);
-      		DB.addObstruction(4, temp);
-      		temp = new Obstructions(17.5f, 72.5f, 72.5f);
-      		DB.addObstruction(4, temp);
-      		
-      		//level 5
-      		temp = new Obstructions(99 ,0, 0, 0);
-			DB.addObstruction(5, temp);
-			temp = new Obstructions(0 , 99, 0, 0);
-      		DB.addObstruction(5, temp);
-      		temp = new Obstructions(0 , 0, 99, 0);
-      		DB.addObstruction(5, temp);
-      		temp = new Obstructions(0 , 0, 0, 99);
-      		DB.addObstruction(5, temp);
-      		temp = new Obstructions( 20, 75, 30, 30); // __
-      		DB.addObstruction(5,temp);
-      		temp = new Obstructions( 20, 45, 30, 65);// |
-      		DB.addObstruction(5,temp);
-      		temp = new Obstructions( 50, 45, 30, 30);//  __
-      		DB.addObstruction(5,temp);
-      		temp = new Obstructions( 50, 15, 65, 30);//    |
-      		DB.addObstruction(5,temp); 
-      		temp = new Obstructions( 80, 15, 30, 30); // __
-      		DB.addObstruction(5,temp);
-      		
-      		//level 6
-      		temp = new Obstructions(99 ,0, 0, 0);
-			DB.addObstruction(6, temp);
-			temp = new Obstructions(0 , 99, 0, 0);
-      		DB.addObstruction(6, temp);
-      		temp = new Obstructions(0 , 0, 99, 0);
-      		DB.addObstruction(6, temp);
-      		temp = new Obstructions(0 , 0, 0, 99);
-      		DB.addObstruction(6, temp);
-      		temp = new Obstructions(7.5f, 50, 15.5f);
-      		DB.addObstruction(6, temp);
-      		temp = new Obstructions(7.5f, 20, 38.5f);
-      		DB.addObstruction(6, temp);
-      		temp = new Obstructions(7.5f, 80, 38.5f);
-      		DB.addObstruction(6, temp);
-      		temp = new Obstructions(7.5f, 20, 61.5f );
-      		DB.addObstruction(6, temp);
-      		temp = new Obstructions(7.5f, 80, 61.5f);
-      		DB.addObstruction(6, temp);
-      		temp = new Obstructions(7.5f, 50, 85.5f);
-      		DB.addObstruction(6, temp);
-      		
-      		//level 7
-      		temp = new Obstructions(99 ,0, 0, 0);
-			DB.addObstruction(7, temp);
-			temp = new Obstructions(0 , 99, 0, 0);
-      		DB.addObstruction(7, temp);
-      		temp = new Obstructions(0 , 0, 99, 0);
-      		DB.addObstruction(7, temp);
-      		temp = new Obstructions(0 , 0, 0, 99);
-      		DB.addObstruction(7, temp);
-      		temp = new Obstructions(25 ,70, 0, 45);
-			DB.addObstruction(7, temp);
-			temp = new Obstructions(0 , 40, 70, 25);
-      		DB.addObstruction(7, temp);
-      		temp = new Obstructions(40 , 0, 25, 70);
-      		DB.addObstruction(7, temp);
-      		temp = new Obstructions(70 , 25, 45, 0);
-      		DB.addObstruction(7, temp);
-      		
-      		//level 8
-      		temp = new Obstructions(99 ,0, 0, 0);
-			DB.addObstruction(8, temp);
-			temp = new Obstructions(0 , 99, 0, 0);
-      		DB.addObstruction(8, temp);
-      		temp = new Obstructions(0 , 0, 99, 0);
-      		DB.addObstruction(8, temp);
-      		temp = new Obstructions(0 , 0, 0, 99);
-      		DB.addObstruction(8, temp);
-      		temp = new Obstructions(10 ,85, 25, 25);
-			DB.addObstruction(8, temp);
-			temp = new Obstructions(85 , 10, 25, 25);
-      		DB.addObstruction(8, temp);
-      		temp = new Obstructions(25 , 25, 10, 85);
-      		DB.addObstruction(8, temp);
-      		temp = new Obstructions(25 , 25, 85, 10);
-      		DB.addObstruction(8, temp);
-      		
-      		
-      		
-      		//level 9
-      		temp = new Obstructions(99 ,0, 0, 0);
-			DB.addObstruction(9, temp);
-			temp = new Obstructions(0 , 99, 0, 0);
-      		DB.addObstruction(9, temp);
-      		temp = new Obstructions(0 , 0, 99, 0);
-      		DB.addObstruction(9, temp);
-      		temp = new Obstructions(0 , 0, 0, 99);
-      		DB.addObstruction(9, temp);
-      		
-      		temp = new Obstructions( 20, 73, 20, 73); // 0 0
-      		DB.addObstruction(9,temp);
-      		temp = new Obstructions( 47, 46, 20, 73); // 1 0 
-      		DB.addObstruction(9,temp);
-      		temp = new Obstructions( 74, 20, 20, 73); // 2 0
-      		DB.addObstruction(9,temp);
-      		
-      		temp = new Obstructions( 20, 73, 47, 46); // 0 1 
-      		DB.addObstruction(9,temp);
-      		temp = new Obstructions( 47, 46, 47, 46); // 1 1 
-      		DB.addObstruction(9,temp);
-      		temp = new Obstructions( 74, 20, 47, 46); // 2 1
-      		DB.addObstruction(9,temp);
-      		
-      		temp = new Obstructions( 20, 73, 74, 20); // 0 3
-      		DB.addObstruction(9,temp);
-      		temp = new Obstructions( 47, 46, 74, 20); // 1 3
-      		DB.addObstruction(9,temp);
-      		temp = new Obstructions( 74, 20, 74, 20); // 2 3
-      		DB.addObstruction(9,temp);
-      		
-      		//level 10
-      		temp = new Obstructions(30f, 50, 50);
-      		DB.addObstruction(10, temp);
-      	
-	}
+		
+		Obstructions temp; 
+		
+		//level 1
+		temp = new Obstructions(99 ,0, 0, 0);
+		DB.addObstruction(1, temp);
+		temp = new Obstructions(0 , 99, 0, 0);
+  		DB.addObstruction(1, temp);
+  		temp = new Obstructions(0 , 0, 99, 0);
+  		DB.addObstruction(1, temp);
+  		temp = new Obstructions(0 , 0, 0, 99);
+  		DB.addObstruction(1, temp);
+  		
+  		
+		//level 2
+  		temp = new Obstructions(99 ,0, 0, 0);
+		DB.addObstruction(2, temp);
+		temp = new Obstructions(0 , 99, 0, 0);
+  		DB.addObstruction(2, temp);
+  		temp = new Obstructions(0 , 0, 99, 0);
+  		DB.addObstruction(2, temp);
+  		temp = new Obstructions(0 , 0, 0, 99);
+  		DB.addObstruction(2, temp);
+  		temp = new Obstructions(17.5f, 50, 72.5f);
+  		DB.addObstruction(2, temp);
+  		temp = new Obstructions(17.5f, 50, 27.5f);
+  		DB.addObstruction(2, temp);
+  		
+  		//level 3
+  		temp = new Obstructions(99 ,0, 0, 0);
+		DB.addObstruction(3, temp);
+		temp = new Obstructions(0 , 99, 0, 0);
+  		DB.addObstruction(3, temp);
+  		temp = new Obstructions(0 , 0, 99, 0);
+  		DB.addObstruction(3, temp);
+  		temp = new Obstructions(0 , 0, 0, 99);
+  		DB.addObstruction(3, temp);
+  		temp = new Obstructions(18.75f ,76.25f, 25, 25);
+  		DB.addObstruction(3, temp); 
+  		temp = new Obstructions(47.5f, 47.5f, 25, 25);
+  		DB.addObstruction(3, temp);
+  		temp = new Obstructions(76.25f, 18.75f, 25, 25);
+  		DB.addObstruction(3, temp);
+  		
+  		//level 4
+  		temp = new Obstructions(99 ,0, 0, 0);
+		DB.addObstruction(4, temp);
+		temp = new Obstructions(0 , 99, 0, 0);
+  		DB.addObstruction(4, temp);
+  		temp = new Obstructions(0 , 0, 99, 0);
+  		DB.addObstruction(4, temp);
+  		temp = new Obstructions(0 , 0, 0, 99);
+  		DB.addObstruction(4, temp);
+  		temp = new Obstructions(17.5f, 27.5f, 27.5f);
+  		DB.addObstruction(4, temp);
+  		temp = new Obstructions(17.5f, 27.5f, 72.5f);
+  		DB.addObstruction(4, temp);
+  		temp = new Obstructions(17.5f, 72.5f, 27.5f);
+  		DB.addObstruction(4, temp);
+  		temp = new Obstructions(17.5f, 72.5f, 72.5f);
+  		DB.addObstruction(4, temp);
+  		
+  		//level 5
+  		temp = new Obstructions(99 ,0, 0, 0);
+		DB.addObstruction(5, temp);
+		temp = new Obstructions(0 , 99, 0, 0);
+  		DB.addObstruction(5, temp);
+  		temp = new Obstructions(0 , 0, 99, 0);
+  		DB.addObstruction(5, temp);
+  		temp = new Obstructions(0 , 0, 0, 99);
+  		DB.addObstruction(5, temp);
+  		temp = new Obstructions( 20, 75, 30, 30); // __
+  		DB.addObstruction(5,temp);
+  		temp = new Obstructions( 20, 45, 30, 65);// |
+  		DB.addObstruction(5,temp);
+  		temp = new Obstructions( 50, 45, 30, 30);//  __
+  		DB.addObstruction(5,temp);
+  		temp = new Obstructions( 50, 15, 65, 30);//    |
+  		DB.addObstruction(5,temp); 
+  		temp = new Obstructions( 80, 15, 30, 30); // __
+  		DB.addObstruction(5,temp);
+  		
+  		//level 6
+  		temp = new Obstructions(99 ,0, 0, 0);
+		DB.addObstruction(6, temp);
+		temp = new Obstructions(0 , 99, 0, 0);
+  		DB.addObstruction(6, temp);
+  		temp = new Obstructions(0 , 0, 99, 0);
+  		DB.addObstruction(6, temp);
+  		temp = new Obstructions(0 , 0, 0, 99);
+  		DB.addObstruction(6, temp);
+  		temp = new Obstructions(7.5f, 50, 15.5f);
+  		DB.addObstruction(6, temp);
+  		temp = new Obstructions(7.5f, 20, 38.5f);
+  		DB.addObstruction(6, temp);
+  		temp = new Obstructions(7.5f, 80, 38.5f);
+  		DB.addObstruction(6, temp);
+  		temp = new Obstructions(7.5f, 20, 61.5f );
+  		DB.addObstruction(6, temp);
+  		temp = new Obstructions(7.5f, 80, 61.5f);
+  		DB.addObstruction(6, temp);
+  		temp = new Obstructions(7.5f, 50, 85.5f);
+  		DB.addObstruction(6, temp);
+  		
+  		//level 7
+  		temp = new Obstructions(99 ,0, 0, 0);
+		DB.addObstruction(7, temp);
+		temp = new Obstructions(0 , 99, 0, 0);
+  		DB.addObstruction(7, temp);
+  		temp = new Obstructions(0 , 0, 99, 0);
+  		DB.addObstruction(7, temp);
+  		temp = new Obstructions(0 , 0, 0, 99);
+  		DB.addObstruction(7, temp);
+  		temp = new Obstructions(25 ,70, 0, 45);
+		DB.addObstruction(7, temp);
+		temp = new Obstructions(0 , 40, 70, 25);
+  		DB.addObstruction(7, temp);
+  		temp = new Obstructions(40 , 0, 25, 70);
+  		DB.addObstruction(7, temp);
+  		temp = new Obstructions(70 , 25, 45, 0);
+  		DB.addObstruction(7, temp);
+  		
+  		//level 8
+  		temp = new Obstructions(99 ,0, 0, 0);
+		DB.addObstruction(8, temp);
+		temp = new Obstructions(0 , 99, 0, 0);
+  		DB.addObstruction(8, temp);
+  		temp = new Obstructions(0 , 0, 99, 0);
+  		DB.addObstruction(8, temp);
+  		temp = new Obstructions(0 , 0, 0, 99);
+  		DB.addObstruction(8, temp);
+  		temp = new Obstructions(20 ,75, 25, 25);
+		DB.addObstruction(8, temp);
+		temp = new Obstructions(75 , 20, 25, 25);
+  		DB.addObstruction(8, temp);
+  		temp = new Obstructions(30 , 30, 10, 85);
+  		DB.addObstruction(8, temp);
+  		temp = new Obstructions(30 , 30, 85, 10);
+  		DB.addObstruction(8, temp);
+  		
+  		
+  		
+  		//level 9
+  		temp = new Obstructions(99 ,0, 0, 0);
+		DB.addObstruction(9, temp);
+		temp = new Obstructions(0 , 99, 0, 0);
+  		DB.addObstruction(9, temp);
+  		temp = new Obstructions(0 , 0, 99, 0);
+  		DB.addObstruction(9, temp);
+  		temp = new Obstructions(0 , 0, 0, 99);
+  		DB.addObstruction(9, temp);
+  		
+  		temp = new Obstructions( 20, 73, 20, 73); // 0 0
+  		DB.addObstruction(9,temp);
+  		temp = new Obstructions( 47, 46, 20, 73); // 1 0 
+  		DB.addObstruction(9,temp);
+  		temp = new Obstructions( 74, 20, 20, 73); // 2 0
+  		DB.addObstruction(9,temp);
+  		
+  		temp = new Obstructions( 20, 73, 47, 46); // 0 1 
+  		DB.addObstruction(9,temp);
+  		temp = new Obstructions( 47, 46, 47, 46); // 1 1 
+  		DB.addObstruction(9,temp);
+  		temp = new Obstructions( 74, 20, 47, 46); // 2 1
+  		DB.addObstruction(9,temp);
+  		
+  		temp = new Obstructions( 20, 73, 74, 20); // 0 3
+  		DB.addObstruction(9,temp);
+  		temp = new Obstructions( 47, 46, 74, 20); // 1 3
+  		DB.addObstruction(9,temp);
+  		temp = new Obstructions( 74, 20, 74, 20); // 2 3
+  		DB.addObstruction(9,temp);
+  		
+  		//level 10
+  		temp = new Obstructions(30f, 50, 50);
+  		DB.addObstruction(10, temp);
+  	
+}
 	
 	
 }

@@ -28,6 +28,7 @@ public class SnakeDB extends SQLiteOpenHelper {
 	
 	String HighScoreTable = "HIGHSCORES";
 	//String Level = "LEVEL";
+	String Mode = "MODE";
 	String Difficulty = "DIFFICULTY";
 	String Score = "SCORE";
 	
@@ -45,7 +46,7 @@ public class SnakeDB extends SQLiteOpenHelper {
 		db.execSQL(query);
 		
 		query = "CREATE TABLE "+HighScoreTable+" ( "+Level+" integer, "+Difficulty+" integer, "
-				+Score+" integer)";
+				+Score+" integer, "+Mode+" integer)";
 		
 		db.execSQL(query);
 		
@@ -58,19 +59,20 @@ public class SnakeDB extends SQLiteOpenHelper {
 		db.execSQL("ON UPGRADE DROP TABLE "+HighScoreTable);
 	}
 
-	public void updateHighScore(int difficulty, int level, int score) {
+	public void updateHighScore(int difficulty, int level, int score,int mode) {
 		
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues values=new ContentValues();
 		
 	    values.put(Score,score );
 	    
-	    int i = db.update(HighScoreTable , values, Level+" = ? AND "+Difficulty+" = ?", new String []{String.valueOf(level),String.valueOf(difficulty)});
+	    int i = db.update(HighScoreTable , values, Level+" = ? AND "+Difficulty+" = ? AND "+Mode+" = ?", new String []{String.valueOf(level),String.valueOf(difficulty),String.valueOf(mode)});
 	    
 	    if(i == 0) {
 	    	
-	    	values.put("Level",level);
-	    	values.put("Difficulty",difficulty);
+	    	values.put(Level,level);
+	    	values.put(Mode,mode);
+	    	values.put(Difficulty,difficulty);
 	    	
 	    	db.insert(HighScoreTable, null, values);
 	    	
@@ -80,12 +82,12 @@ public class SnakeDB extends SQLiteOpenHelper {
 	    
 	}
 	
-	public int getHighScore(int difficulty, int level) {
+	public int getHighScore(int difficulty, int level,int mode) {
 		
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		String query = "SELECT * FROM "+HighScoreTable+" WHERE "+Difficulty+"="+difficulty+" AND "
-						+Level+"="+level;
+						+Level+"="+level+" AND "+Mode+"="+mode;
 		
 		Cursor cursor = db.rawQuery(query, null);
 		

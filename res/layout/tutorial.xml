@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    	xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent">
+	    
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:padding="8dp"
+	    android:orientation="vertical" >
+	
+	    <TextView
+	        android:id="@+id/textView1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:gravity="center"
+	        android:padding="5dp"
+	        android:text="Swipe UP/DOWN/LEFT/RIGHT to change direction of the snake"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+	    <ImageView
+	        android:id="@+id/imageView1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:gravity="center"
+	        android:src="@drawable/swipe" />
+	
+	    <TextView
+	        android:id="@+id/textView2"
+	        android:layout_width="wrap_content"
+	        android:layout_gravity="center"
+	        android:gravity="center"
+	        android:padding="5dp"
+	        android:layout_height="wrap_content"
+	        android:text="Eat food to increase your score and make your snake grow longer"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	    
+	    <ImageView
+	        android:id="@+id/imageView2"
+	        android:layout_gravity="center"
+	        android:gravity="center"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/snake_long" />
+	    
+	    <ImageView
+	        android:id="@+id/imageView3"
+	        android:layout_gravity="center"
+	        android:gravity="center"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/score" />
+	    
+	    <TextView
+	        android:id="@+id/textView3"
+	        android:layout_gravity="center"
+	        android:gravity="center"
+	        android:padding="5dp"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Be careful not to hit edges and obstructions"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	    
+	    <ImageView
+	        android:id="@+id/imageView4"
+	        android:layout_gravity="center"
+	        android:gravity="center"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/hit_edge" />
+	    
+	    <ImageView
+	        android:id="@+id/imageView5"
+	        android:layout_gravity="center"
+	        android:gravity="center"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/hit_obstruction" />
+	    
+	    <TextView
+	        android:id="@+id/textView4"
+	        android:layout_gravity="center"
+	        android:gravity="center"
+	        android:padding="5dp"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="You have limited time in TIME MODE so make it count!"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+	    <ImageView
+	        android:id="@+id/imageView6"
+	        android:layout_gravity="center"
+	        android:gravity="center"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/timer" />
+	    
+	    <TextView
+	        android:id="@+id/textView5"
+	        android:layout_gravity="center"
+	        android:gravity="center"
+	        android:padding="5dp"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Get bonus seconds for every point you make!"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+	    <ImageView
+	        android:id="@+id/imageView7"
+	        android:layout_gravity="center"
+	        android:gravity="center"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/bonus_time" />
+	    
+	    <TextView
+	        android:id="@+id/textView6"
+	        android:layout_gravity="center"
+	        android:gravity="center"
+	        android:padding="5dp"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Keep going and make your highscore!"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+	    <ImageView
+	        android:id="@+id/imageView8"
+	        android:layout_gravity="center"
+	        android:gravity="center"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/highscore" />
+	    
+	    <TextView
+	        android:id="@+id/textView7"
+	        android:layout_gravity="center"
+	        android:gravity="center"
+	        android:padding="5dp"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Good Luck and Good Game Well Played!" />
+	    
+	</LinearLayout>
+</ScrollView>

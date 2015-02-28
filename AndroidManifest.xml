@@ -32,16 +32,28 @@
         <activity
             android:name="com.ggwp.snake.GameActivity"
             android:screenOrientation="portrait"
-            android:label="game activity" />
+            android:label="classic game mode activity" />
         
         <activity
-            android:name="com.ggwp.snake.HighScores"
+            android:name="com.ggwp.snake.TimeGameActivity"
             android:screenOrientation="portrait"
-            android:label="high scores" />
+            android:label="timed game mode activity" />
+        
         <activity
             android:name="com.ggwp.snake.Levels"
             android:screenOrientation="portrait"
             android:label="levels" />
+        
+        <activity
+            android:name="com.ggwp.snake.HighScoreTabFragmentActivity"
+            android:screenOrientation="portrait"
+            android:label="high score activity" />
+        
+        <activity
+            android:name="com.ggwp.snake.Tutorial"
+            android:screenOrientation="portrait"
+            android:label="Tutorial" />
+        
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

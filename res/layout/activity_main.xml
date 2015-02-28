@@ -3,29 +3,9 @@
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="8dp"
     android:background="#E3EAEC"
     tools:context="${packageName}.${activityClass}" >
-
-    <Button
-        android:id="@+id/play"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:background="#719DA7"
-        android:text="Play" />
-
-    <Button
-        android:id="@+id/highscores"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#719DA7"
-        android:layout_below="@+id/play"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="41dp"
-        android:padding="5dp"
-        android:text="High Scores" />
 
     <LinearLayout
         
@@ -37,11 +17,74 @@
         
         <com.google.android.gms.ads.AdView
 	        android:id="@+id/adViewMainMenu"
-	        android:layout_width="wrap_content"
+	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        ads:adSize="BANNER"
 	        ads:adUnitId="ca-app-pub-4192002242677873/3638166543" />
        
     </LinearLayout>
 
+
+    <Button
+        android:id="@+id/classicMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/timeMode"
+        android:layout_marginBottom="56dp"
+        android:background="@drawable/button_custom"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:text="CLASSIC MODE"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/timeMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="TIME MODE"
+		android:textColor="#FFFFFF"
+		android:textSize="30sp"
+		android:background="@drawable/button_custom"
+		android:shadowColor="#A8A8A8"
+		android:shadowDx="0"
+		android:shadowDy="0"
+		android:shadowRadius="5"/>
+    
+    <Button
+        android:id="@+id/highscores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timeMode"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="56dp"
+        android:padding="5dp"
+        android:text="HIGH SCORES"
+        android:textColor="#FFFFFF"
+		android:textSize="30sp"
+		android:background="@drawable/button_custom"
+		android:shadowColor="#A8A8A8"
+		android:shadowDx="0"
+		android:shadowDy="0"
+		android:shadowRadius="5" />
+    
+    <ImageButton
+        android:id="@+id/help"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/help_custom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:padding="8dp"
+        android:src="@android:drawable/ic_menu_help" />
+    
 </RelativeLayout>
